@@ -1,10 +1,10 @@
 from PySimpleGUI import *
 
 layout=[
-[Text("Hello World")],
+[Text("Welcome to Schedule Management")],
 
 ]
-Window("This is Title",layout=layout).read()
+Window("Schedule Management",layout=layout).read()
 
 
 
