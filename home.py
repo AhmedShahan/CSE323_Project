@@ -10,9 +10,12 @@ algorithm=["FCFS","SJF","Priority","Round Robin"]
 process=[]
 layout=[
 [Text("Welcome to Schedule Management",font=("Jokerman",40,"underline"),size=(1200,1),justification="c")],
-[Text("Select Algorithm: ",font=("Tomes & New Roma",15,"bold")),Combo(values=algorithm)],
-[Text("Enter Process ",font=("Tomes & New Roma",15,"bold")),InputText(key="proc")],
+[Text("Select Algorithm: ",font=("Monotype Corsiva",15,"bold"),size=(17,1)),Combo(values=algorithm)],
+[Text("Enter Process ",font=("Monotype Corsiva",15,"bold"),size=(17,1)),InputText(key="proc")],
 [Button("+ADD+",key="addP")],
+
+[Text('\n\n\n'),Text("Process List: "),Input(key="output")],
+
 
 
 
@@ -32,3 +35,4 @@ while True:
         else:
             popup("Process Added")
             process.append(pvalue)
+            doc['output'].update(process)
