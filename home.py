@@ -25,6 +25,9 @@ layout=[
 
 
 [Text("Entered Process:  ",font=("Monotype Corsiva",15,"bold")),Input(key="output")],
+[Button("Submit",key='submit')]
+
+
 ]
 doc = Window('Schedule Algorith Checker', size=(750,500),location=(100,10),return_keyboard_events=True).Layout(layout)
 
@@ -41,3 +44,5 @@ while True:
         else:
             process.append(pvalue)
             doc['output'].update(process)
+    if event=="submit":
+        print(value)
