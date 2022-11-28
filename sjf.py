@@ -1,19 +1,12 @@
 
-# p4
-# p1
-# p3
+
 
 # Process Birstime Allocation
-a=[("p4",10,2),("p3",3,5),("p1",7,2),("p2",9,0),("p5",12,6)]
-# print("Process|\tAllocation Time|Burst Time")
+a=[("p1",7,5),("p2",10,7),("p3",12,2),("p4",4,3),("p5",8,6)]
 
-# for i in range(0, len(a)):
-#     for j in range(0,3):
-#         print(a[i][j],end="\t")
-#     print('\n')
 
 a.sort(key = lambda x : x[0])
-
+a.sort(key = lambda x : x[1])
 a.sort(key = lambda x : x[2])
 
 print(a)
