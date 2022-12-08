@@ -5,8 +5,6 @@
 
 def sjf():
     a=[("p1",7,5),("p2",10,7),("p3",12,2),("p4",4,3),("p5",8,6)]
-
-
     a.sort(key = lambda x : x[0])
     a.sort(key = lambda x : x[1])
     a.sort(key = lambda x : x[2])
