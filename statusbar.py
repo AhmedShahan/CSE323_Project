@@ -3,6 +3,9 @@ import fcfs as fcfs
 import time
 import math
 theme('pythonPlus')
+theme_input_background_color("black")
+theme_input_text_color("white")
+
 layout=[
     [ProgressBar(100,orientation='h',size=(50,3),border_width=4,key="progressBar1", bar_color=("Black","white")),Input(key='value1',size=(5,1))],
     [ProgressBar(100,orientation='h',size=(50,3),border_width=4,key="progressBar2", bar_color=("Black","white")),Input(key='value2',size=(5,1))],
@@ -29,7 +32,7 @@ def statusvalue2(bt):
     if event=="change":
         val=math.ceil(((100/BT)*BT))
         for i in range(BT,val+1):
-            time.sleep(0.01)
+            time.sleep(0.05)
             win["progressBar2"].update(i)
             win["value2"].update(i)
 
@@ -39,7 +42,7 @@ def statusvalue3(bt):
     if event=="change":
         val=math.ceil(((100/BT)*BT))
         for i in range(BT,val+1):
-            time.sleep(0.01)
+            time.sleep(0.05)
             win["progressBar3"].update(i)
             win["value3"].update(i)
 def statusvalue4(bt):
@@ -47,7 +50,7 @@ def statusvalue4(bt):
     if event=="change":
         val=math.ceil(((100/BT)*BT))
         for i in range(BT,val+1):
-            time.sleep(0.01)
+            time.sleep(0.05)
             win["progressBar4"].update(i)
             win["value4"].update(i)
 def statusvalue5(bt):
@@ -55,7 +58,7 @@ def statusvalue5(bt):
     if event=="change":
         val=math.ceil(((100/BT)*BT))
         for i in range(BT,val+1):
-            time.sleep(0.01)
+            time.sleep(0.05)
             win["progressBar5"].update(i)
             win["value5"].update(i)
 
