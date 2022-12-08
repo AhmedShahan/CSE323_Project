@@ -1,5 +1,8 @@
 from PySimpleGUI import *
+import sjf as sjf
 import fcfs as fcfs
+
+
 import time
 import math
 theme('pythonPlus')
@@ -27,6 +30,7 @@ def statusvalue1(bt):
             win["progressBar1"].update(i)
             win["value1"].update(i)
 
+
 #process 2
 def statusvalue2(bt):
     BT=bt
@@ -46,6 +50,7 @@ def statusvalue3(bt):
             time.sleep(0.05)
             win["progressBar3"].update(i)
             win["value3"].update(i)
+
 def statusvalue4(bt):
     BT=bt
     if event=="change":
@@ -54,6 +59,7 @@ def statusvalue4(bt):
             time.sleep(0.05)
             win["progressBar4"].update(i)
             win["value4"].update(i)
+
 def statusvalue5(bt):
     BT=bt
     if event=="change":
@@ -67,21 +73,18 @@ while True:
     event,value=win.read()
     if event=="Exit" or event==WIN_CLOSED:
         break
-
-    result=fcfs.algorithm()
-    for i in result:
-        if (i[0])=='1':
-            statusvalue1(i[1])
-        if (i[0])=='2':
-            statusvalue2(i[1])
-        if (i[0])=='3':
-            statusvalue3(i[1])
-        if (i[0])=='4':
-            statusvalue4(i[1])
-        if (i[0])=='5':
-            statusvalue5(i[1])
-
-
-
     
-
+    result= sjf.sjf()
+    for i in result:
+        print(i)
+        if i[0]=='p1':
+            statusvalue1(i[1])
+        if i[0]=='p2':
+            statusvalue2(i[1])
+        if i[0]=='p3':
+            statusvalue3(i[1])
+        if i[0]=='p4':
+            statusvalue4(i[1])
+        if i[0]=='p5':
+            statusvalue5(i[1])
+        
