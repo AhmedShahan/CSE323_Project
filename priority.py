@@ -1,6 +1,6 @@
 
 # Process Birstime Allocation priority
-a=[("p1",5,2,2),("p2",7,4,1),("p3",2,1,3),("p4",3,3,0)]
+a=[("p1",5,2,2),("p2",7,2,1),("p3",2,1,3),("p4",3,3,0)]
 
 a.sort(key = lambda x : x[2])
 gann=[]
