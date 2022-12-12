@@ -46,6 +46,7 @@ while True:
     elif event=="next":
         win.close()
         selectAlgorithm()
+
         
 
-    
+    \\|
