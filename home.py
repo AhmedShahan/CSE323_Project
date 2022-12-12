@@ -1,48 +1,51 @@
-from PySimpleGUI import *
+import PySimpleGUI as pg
+from selectalgorithm import selectAlgorithm
+close = 'static/images/close.png'
+next = 'static/images/next.png'
+pg.theme("PythonPlus")
+pg.theme_background_color("#120f2a")
+pg.theme_element_background_color("#120f2a")
+pg.theme_element_text_color("##120f2a")
 
-theme("Pythonplus")
-theme_button_color("black")
-theme_input_background_color("white")
-theme_input_text_color("#001D3C")
-
-algorithm=["FCFS","SJF","Priority","Round Robin"]
-processname=['P1','P2','P3','P4','P5']
-col=[
-[Text("Select Algorithm: ",font=("Monotype Corsiva",15,"bold"),size=(12,1)),Combo(values=algorithm)],
-[Text("Enter Process Details ",font=("Monotype Corsiva",15,"bold","underline"),size=(10,1))],
-[Text("Process Name: ",font=("Monotype Corsiva",15,"bold"),size=(10,1)),Combo(values=processname,key="proc")],
-
-[Text("Arrivel Time",font=("Monotype Corsiva",15,"bold"),size=(10,1)),InputText(key="at",size=(5,1)),Checkbox("Default: 0",key="default")],
-[Text("Burst Time: ",font=("Monotype Corsiva",15,"bold"),size=(10,1)),InputText(key="bt",size=(5,1))],
-[Text('\t'),Button("+ADD+",key="addP")],
+frame=[    
+    [
+        pg.Image('static/images/shaan3.png'),
+        pg.Text("Shahan Ahmed\nDepartment of Electrical & Computer Engineer.\nMajor Computer Science & Enineering\nEmail:shahan.ahmed@northsouth.edu\n",
+                size=(50,4),justification="left",font=("monotype Corsiva",15),background_color="#120f2a"),
+    ], 
+    [pg.Text("=====================================================================",background_color="black")],
+    [
+        
+        pg.Image('static/images/nabila.png'),
+        pg.Text("Nabila Rashid\nDepartment of Electrical & Computer Engineer.\nMajor Computer Science & Enineering\nEmail:nabila.rashid@northsouth.edu",
+                size=(50,4),justification="left",font=("monotype Corsiva",15),background_color="#120f2a"),
+    ],  
 ]
-
-
 layout=[
-[Text("Welcome to Schedule Management",font=("Jokerman",30,"underline"),size=(1200,1),justification="c")],
-
-[Column(col)],
-
-
-[Text("Entered Process:  ",font=("Monotype Corsiva",15,"bold")),Input(key="output")],
-[Button("Submit",key='submit')]
-
-
-]
-doc = Window('Schedule Algorith Checker', size=(750,500),location=(100,10),return_keyboard_events=True).Layout(layout)
-
-process=[]
-while True:
-    event,value=doc.read()
-    if event == WIN_CLOSED:
-            break
     
-    if event=="addP":
-        pvalue=value["proc"]
-        if len(pvalue)==0:
-            popup("Please Enter Process Name")
-        else:
-            process.append(pvalue)
-            doc['output'].update(process)
-    if event=="submit":
-        print(value)
+    [
+        pg.Image('static/images/pic.png',size=(700,140)),
+    ],
+    [pg.Text("\n\n\n\n",background_color="#120f2a")],
+    [
+    pg.Frame("Developed By",frame,title_color="white",size=(500,400),font=("monotype Corsiva",20)),
+    pg.Text("\t",background_color="#120f2a"),
+    pg.ReadFormButton('', button_color="#120f2a",image_filename=close, image_size=(45, 45), image_subsample=2, border_width=0,key="Close"),
+    pg.ReadFormButton('', button_color="#120f2a",image_filename=next, image_size=(115,45), image_subsample=2, border_width=0,key="next")
+    ],
+]
+
+win=pg.Window("Admin Login",layout,size=(800,550),location=(500,100))
+
+
+while True:
+    event,value=win.read()
+    
+    if event=="Close" or event==pg.WIN_CLOSED:
+        break
+    elif event=="next":
+        win.close()
+        selectAlgorithm()
+        
+
+    
