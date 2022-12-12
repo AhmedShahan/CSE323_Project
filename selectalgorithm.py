@@ -1,4 +1,6 @@
 from PySimpleGUI import *
+
+import fcfsgui as fcfsGUI
 theme("PythonPlus")
 theme_background_color("#120f2a")
 theme_element_background_color("#120f2a")
@@ -21,3 +23,6 @@ def selectAlgorithm():
             break
         elif event=="next":
             win.close()
+        elif event=="fcfs":
+            win.close()
+            fcfsGUI.fcfsGUI()

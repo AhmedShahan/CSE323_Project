@@ -47,6 +47,3 @@ while True:
         win.close()
         selectAlgorithm()
 
-        
-
-    \\|

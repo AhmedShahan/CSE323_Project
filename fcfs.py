@@ -4,8 +4,8 @@
 # p3
 
 # Process Birstime Allocation
-def algorithm():
-    a=[("4",10,2),("3",3,5),("1",7,2),("2",9,0),("5",12,6)]
+def algorithm(a):
+    # a=[("4",10,2),("3",3,5),("1",7,2),("2",9,0),("5",12,6)]
     # print("Process|\tAllocation Time|Burst Time")
 
     # for i in range(0, len(a)):
@@ -23,9 +23,11 @@ def algorithm():
 
     #first allocation time in gang chart
     first=a[0][2]
+    print(first)
     allocation.append(first)
 
     second=a[0][2] + a[0][1]
+    print(second)
     allocation.append(second)
 
     for i in range(1,len(a)):
