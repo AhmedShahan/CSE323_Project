@@ -1,107 +1,129 @@
-from PySimpleGUI import *
-import sjf as sjf
-import fcfs as fcfs
-import time
-import math
-theme('pythonPlus')
-theme_input_background_color("black")
-theme_input_text_color("white")
+# Process BT AT TQ
+TQ=2
+a=[('p1',3,2),('p2',5,0),('p3',3,3),('p4',6,1)]
+# Answer: p2 p4 p1 p3 p2 p4 p1 p3
+# 0 2 4 6 8 10 12 13 14 15
+OBT=[]
+OLST=[]
 
-layout=[
-    [ProgressBar(100,orientation='h',size=(50,3),border_width=4,key="progressBar1", bar_color=("Black","white")),Input(key='value1',size=(5,1))],
-    [ProgressBar(100,orientation='h',size=(50,3),border_width=4,key="progressBar2", bar_color=("Black","white")),Input(key='value2',size=(5,1))],
-    [ProgressBar(100,orientation='h',size=(50,3),border_width=4,key="progressBar3", bar_color=("Black","white")),Input(key='value3',size=(5,1))],
-    [ProgressBar(100,orientation='h',size=(50,3),border_width=4,key="progressBar4", bar_color=("Black","white")),Input(key='value4',size=(5,1))],
-    [ProgressBar(100,orientation='h',size=(50,3),border_width=4,key="progressBar5", bar_color=("Black","white")),Input(key='value5',size=(5,1))],
-    [Button("Display Progress",key="change")],
-]
+# Collect all the Burst Time
+for i in a:
+    OBT.append(i[1])
+    OLST.append(i[0])
 
-win=Window("progress Bar",layout)
+# Sort using Arrival Time
+a.sort(key = lambda x : x[2])
+list1=[]
+list2=[]
+list3=[]
+list4=[]
+sortedOBT=[]
+for i in a:
+    sortedOBT.append(i[1])
 
-#For process 1
-def statusvalue1(initial,OBT,duration):
-    print("Initial",initial)
-    print("Duration",duration)
-    initialP=math.ceil(((initial/OBT)*100))
-    if event=="change":
-        val=math.ceil(((duration/OBT)*100))
-        for i in range(initialP,val+1):
-            time.sleep(0.05)
-            win["progressBar1"].update(i)
-            win["value1"].update(i)
+# print(OBT)
+# print(sortedOBT)
+# print(a)
+templist=[]
+cycle=[]
+for i in a:
+    # print(i[1])
+    value=i[1]
+    process=i[0]
+    t=value//TQ #2
+    r=value%TQ  #1
+    cycle.append(t+1)
+    for i in range(0,t):
+        templist.append((process,TQ))
+    if r!=0:
+        templist.append((process,r))
+    
+Output = {}
+for x, y in templist:
+    if x in Output:
+        Output[x].append((x, y))
+    else:
+        Output[x] = [(x, y)]
 
-# [('p1',0,2),('p2',0,2),('p1',2,2),('p2',2,1)]
-# statusvalue1(i[1],bt[0],i[2])
-#process 2
-def statusvalue2(initial,OBT,duration):
-    initialP=math.ceil(((initial/OBT)*100))
-    if event=="change":
-        val=math.ceil(((duration/OBT)*100))
-        for i in range(initialP,val+1):
-            time.sleep(0.05)
-            win["progressBar2"].update(i)
-            win["value2"].update(i)
-            
-            
+# for i in Output:
+#     print(i)
 
-# #process 3
-# def statusvalue3(initial,OBT,duration):
-#     if event=="change":
+# print("Temp List:",templist)
+# print("Output",Output)
+# # print("Length ",len(templist))
+FinalFinal=[]
+for values in Output.values():
+    print(values[2])
+    # FinalFinal.append(values[1])
+    # FinalFinal.append(values[1])
+    # FinalFinal.append(values[2])
+    # for i in values:
+    #     print(i)
 
-#         count=int((initial/OBT)*100)
-#         val=math.ceil(((duration/OBT)*100))
-#         for i in range(count,val+1):
-#             time.sleep(0.05)
-#             win["progressBar3"].update(i)
-#             win["value3"].update(i)
-        
+# print(values)
+# print(FinalFinal)
+# for i in templist:
 
-# def statusvalue4(initial,OBT,duration):
-#     if event=="change":
-#         count=int((initial/OBT)*100)
-#         val=math.ceil(((duration/OBT)*100))
-#         for i in range(count,val+1):
-#             time.sleep(0.05)
-#             win["progressBar4"].update(i)
-#             win["value4"].update(i)
-            
+# for i in templist:
 
-# def statusvalue5(initial,OBT,duration):
-#     if event=="change":
-#         count=int((initial/OBT)*100)
-#         val=math.ceil(((duration/OBT)*100))
-#         for i in range(count,val+1):
-#             time.sleep(0.05)
-#             win["progressBar5"].update(i)
-#             win["value5"].update(i)
+#     if i[0]=="p1":
+#         list1.append(i)
+#     elif i[0]=="p2":
+#         list2.append(i)
+#     elif i[0]=="p3":
+#         list3.append(i)
+#     elif i[0]=="p4":
+#         list4.append(i)
+# print("list 1",list1)
+# print("list 2",list2)
+# print("list 3",list3)
+# print("list 4",list4)
+# firstList=[]
+# count=0
+# firstList.append(templist[0])
+# for i in range(1,len(templist)):
+#     if firstList.count(templist[i])>0:
+#         count+=1
+#         continue
+#     else:
+#         firstList.append(templist[i])
+#         count+=1
+# print(firstList)
 
-while True:
-    event,value=win.read()
-    if event=="Exit" or event==WIN_CLOSED:
-        break
-    bt=[8,6]
-    result= [('p1',0,2),('p2',0,2),('p1',2,2),('p2',2,2),]
-    for i in result:
-        # print(i)
-        start=i[1]
-        start=int(start)
-        if i[0]=='p1':
-            duration=i[1]+i[2]
-            #print(duration)
-            statusvalue1(start,bt[0],duration)
-            print(start)
-            start=start+duration
-            print(start)
-        if i[0]=='p2':
-            duration=i[1]+i[2]
-            #print(duration)
-            statusvalue2(start,bt[1],duration)
-            print(start)
-            start=start+duration
-            print(start)
-        # if i[0]=='p3':
-        #     statusvalue3(i[1],bt[0],i[2])
-        # if i[0]=='p4':
-        #     statusvalue4(i[1],bt[0],i[2])
-        # if i[0]=='p5':
-        #     statusvalue5(i[1],bt[0],i[2])
+
+
+# print(list1)
+# print(list2)
+# print(list3)
+# print(list4)
+
+
+    # for j in a:
+    #     print(j[1])
+    # while i[2]!=0:
+    #     i[2]=i[2]-2
+    #     if i<=0:
+    #         print(0)
+    #         break
+    #     else:
+    #         print(i)
+# print(OBT)
+# while all(item == 0 for item in a):
+#     print(a)
+#     a[1]=a[1]-1
+# for i in OBT:
+#     while True:
+#         i=i-2
+#         listi.append(a[])
+#         if i<=0:
+#             print(0)
+#             break
+#         else:
+
+
+
+
+
+
+
+

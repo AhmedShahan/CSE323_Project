@@ -16,8 +16,14 @@ frame=[
     [pg.Text("=====================================================================",background_color="black")],
     [
         
-        pg.Image('static/images/nabila.png'),
-        pg.Text("Nabila Rashid\nDepartment of Electrical & Computer Engineer.\nMajor Computer Science & Enineering\nEmail:nabila.rashid@northsouth.edu",
+        pg.Image('static/images/afsara.png'),
+        pg.Text("Afsara Waziha\nDepartment of Electrical & Computer Engineer.\nMajor Computer Science & Enineering\nEmail:afsara.waziha@northsouth.edu",
+                size=(50,4),justification="left",font=("monotype Corsiva",15),background_color="#120f2a"),
+    ], 
+    [pg.Text("=====================================================================",background_color="black")],
+    [
+        pg.Image('static/images/shaan3.png'),
+        pg.Text("Shahan Ahmed\nDepartment of Electrical & Computer Engineer.\nMajor Computer Science & Enineering\nEmail:shahan.ahmed@northsouth.edu\n",
                 size=(50,4),justification="left",font=("monotype Corsiva",15),background_color="#120f2a"),
     ],  
 ]
@@ -26,7 +32,7 @@ layout=[
     [
         pg.Image('static/images/pic.png',size=(700,140)),
     ],
-    [pg.Text("\n\n\n\n",background_color="#120f2a")],
+    # [pg.Text("",background_color="#120f2a")],
     [
     pg.Frame("Developed By",frame,title_color="white",size=(500,400),font=("monotype Corsiva",20)),
     pg.Text("\t",background_color="#120f2a"),
@@ -35,7 +41,7 @@ layout=[
     ],
 ]
 
-win=pg.Window("Admin Login",layout,size=(800,550),location=(500,100))
+win=pg.Window("Admin Login",layout,size=(800,600),location=(400,100))
 
 
 while True:

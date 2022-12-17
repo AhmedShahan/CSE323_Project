@@ -1,8 +1,6 @@
 from PySimpleGUI import *
 import sjf as sjf
 import fcfs as fcfs
-
-
 import time
 import math
 theme('pythonPlus')
@@ -19,24 +17,27 @@ layout=[
 ]
 
 win=Window("progress Bar",layout)
-BT=0
+
 #For process 1
 def statusvalue1(initial,OBT,duration):
+    print("Initial",initial)
+    print("Duration",duration)
+    initialP=math.ceil(((initial/OBT)*100))
     if event=="change":
-        count=duration+initial
-        val=math.ceil(((count/OBT)*100))
-        for i in range(count,val+1):
+        val=math.ceil(((duration/OBT)*100))
+        for i in range(initialP,val+1):
             time.sleep(0.05)
             win["progressBar1"].update(i)
             win["value1"].update(i)
-            
 
+# [('p1',0,2),('p2',0,2),('p1',2,2),('p2',2,1)]
+# statusvalue1(i[1],bt[0],i[2])
 #process 2
 def statusvalue2(initial,OBT,duration):
+    initialP=math.ceil(((initial/OBT)*100))
     if event=="change":
-        count=duration+initial
-        val=math.ceil(((count/OBT)*100))
-        for i in range(count,val+1):
+        val=math.ceil(((duration/OBT)*100))
+        for i in range(initialP,val+1):
             time.sleep(0.05)
             win["progressBar2"].update(i)
             win["value2"].update(i)
@@ -78,19 +79,29 @@ while True:
     event,value=win.read()
     if event=="Exit" or event==WIN_CLOSED:
         break
-    bt=[4,3]
-    result= [('p1',0,2),('p2',0,2),('p1',2,2),('p2',2,1)]
+    bt=[8,5]
+    result= [('p1',0,2),('p2',0,2),('p1',2,2),('p2',2,2),('p2',4,1),('p1',4,2),('p1',6,2)]
     for i in result:
-        print(i)
+        # print(i)
+        start=i[1]
+        start=int(start)
         if i[0]=='p1':
-            statusvalue1(i[1],bt[0],i[2])
+            duration=i[1]+i[2]
+            #print(duration)
+            statusvalue1(start,bt[0],duration)
+            print(start)
+            start=start+duration
+            print(start)
         if i[0]=='p2':
-            statusvalue2(i[1],bt[1],i[2])
-
+            duration=i[1]+i[2]
+            #print(duration)
+            statusvalue2(start,bt[1],duration)
+            print(start)
+            start=start+duration
+            print(start)
         # if i[0]=='p3':
         #     statusvalue3(i[1],bt[0],i[2])
         # if i[0]=='p4':
         #     statusvalue4(i[1],bt[0],i[2])
         # if i[0]=='p5':
         #     statusvalue5(i[1],bt[0],i[2])
-        

@@ -1,0 +1,9 @@
+a=13
+b=3
+while(a!=0):
+    a=a-2
+    if(a<0):
+        print(0)
+        break
+    else:
+        print(a)
