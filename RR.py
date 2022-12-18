@@ -66,8 +66,9 @@ def RRalgorithm(a,tq):
                 mainList.append(list1[j][i])
     # print(mainList)
     return mainList
-def OriginalBT():
-    return OBT
+    
+# def OriginalBT():
+#     return OBT
 
 
 

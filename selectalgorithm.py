@@ -2,6 +2,7 @@ from PySimpleGUI import *
 
 import fcfsgui as fcfsGUI
 import sjfGui as sjf
+import RRGUI as rr
 
 theme("PythonPlus")
 theme_background_color("#120f2a")
@@ -31,4 +32,7 @@ def selectAlgorithm():
         elif event=="sjf":
             win.close()
             sjf.sjfGUI()
-
+        elif event=="rr":
+            win.close()
+            rr.RRGUI()
+            
