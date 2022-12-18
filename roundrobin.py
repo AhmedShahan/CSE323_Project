@@ -53,7 +53,17 @@ for x, y in templist:
 # # print("Length ",len(templist))
 FinalFinal=[]
 for values in Output.values():
-    print(values[2])
+    if(values[2]==None):
+        FinalFinal.append(values[2])
+    
+    print(FinalFinal)
+    print(values[1])
+    #  for i in values:
+    #     print(i)
+    #     if values[i]==None:
+    #         continue
+    #     else:
+    #         print(values[i])
     # FinalFinal.append(values[1])
     # FinalFinal.append(values[1])
     # FinalFinal.append(values[2])

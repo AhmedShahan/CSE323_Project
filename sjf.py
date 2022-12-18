@@ -1,6 +1,3 @@
-
-
-
 # Process Birstime Allocation
 
 def sjf():
