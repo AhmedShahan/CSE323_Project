@@ -36,23 +36,71 @@ def statusvalue2(initial,OBT,duration):
             time.sleep(0.05)
             win["progressBar2"].update(i)
             win["value2"].update(i)
+def statusvalue3(initial,OBT,duration):
+    initialP=math.ceil(((initial/OBT)*100))
+    if event=="change":
+        val=math.ceil(((duration/OBT)*100))
+        for i in range(initialP,val+1):
+            time.sleep(0.05)
+            win["progressBar3"].update(i)
+            win["value3"].update(i)
+
+def statusvalue4(initial,OBT,duration):
+    initialP=math.ceil(((initial/OBT)*100))
+    if event=="change":
+        val=math.ceil(((duration/OBT)*100))
+        for i in range(initialP,val+1):
+            time.sleep(0.05)
+            win["progressBar4"].update(i)
+            win["value4"].update(i)
+def statusvalue5(initial,OBT,duration):
+    initialP=math.ceil(((initial/OBT)*100))
+    if event=="change":
+        val=math.ceil(((duration/OBT)*100))
+        for i in range(initialP,val+1):
+            time.sleep(0.05)
+            win["progressBar5"].update(i)
+            win["value5"].update(i)
 
 while True:
     event,value=win.read()
     if event=="Exit" or event==WIN_CLOSED:
         break
-    bt=[8,5]
-    result= [('p1',2),('p2',2),('p1',2),('p2',2),('p2',1),('p1',2),('p1',2)]
+    bt=[3,5,2,6,6]
+    result= [('p2', 2), ('p4', 2), ('p5', 2), ('p1', 2), ('p2', 2), ('p4', 2), ('p5', 2), ('p1', 1), ('p2', 1), ('p4', 2), ('p5', 2)]
     initial1=0
     initial2=0
+    initial3=0
+    initial4=0
+    initial5=0
     for i in result:
         if i[0]=='p1':
+            print(i)
             start=initial1
             duration=initial1+i[1]
             statusvalue1(start,bt[0],duration)
             initial1=duration
         elif i[0]=='p2':
+            print(i)
             start=initial2
             duration=initial2+i[1]
             statusvalue2(start,bt[1],duration)
             initial2=duration
+        elif i[0]=='p3':
+            print(i)
+            start=initial3
+            duration=initial3+i[1]
+            statusvalue3(start,bt[2],duration)
+            initial3=duration
+        elif i[0]=='p4':
+            print(i)
+            start=initial4
+            duration=initial4+i[1]
+            statusvalue4(start,bt[3],duration)
+            initial4=duration
+        elif i[0]=='p5':
+            print(i)
+            start=initial5
+            duration=initial5+i[1]
+            statusvalue5(start,bt[4],duration)
+            initial5=duration

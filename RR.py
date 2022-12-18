@@ -1,8 +1,8 @@
+OBT=[]
 def RRalgorithm(a,tq):
     # Process BT AT TQ
     TQ=tq
-    a=[('p1',3,2),('p2',5,0),('p3',3,3),('p4',6,1)]
-    OBT=[]
+    # a=[('p1',3,2),('p2',5,0),('p3',3,3),('p4',6,1),('p5',6,1)]
     OLST=[]
 
     # Collect all the Burst Time
@@ -49,25 +49,25 @@ def RRalgorithm(a,tq):
     list1.append(Output.get(sortedP[1]))
     list1.append(Output.get(sortedP[2]))
     list1.append(Output.get(sortedP[3]))
-
+    list1.append(Output.get(sortedP[4]))
+    # print("After Append",list1)
+    ultapalta=("0",0)
     for i in list1:
         if len(i)<maxTuple:
             for j in range(0,maxTuple-len(i)):
-                i.append(("0",0))
-
+                i.append(ultapalta)
+    # print("Append Ultapalta",list1)
     for i in range(0,maxTuple):
-        for j in range(0,len(OBT)):
+        for j in range(0,5):
             temp=list1[j][i]
             if temp==("0",0):
                 pass
             else:
                 mainList.append(list1[j][i])
-    #print(mainList)
+    # print(mainList)
     return mainList
-
-
-
-    
+def OriginalBT():
+    return OBT
 
 
 
